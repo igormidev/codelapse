@@ -22,6 +22,12 @@ class _SectionPipelineOptions extends StatelessWidget {
           BlocBuilder<CurrentPipeBloc, CurrentPipeState>(
             bloc: bloc,
             builder: (final context, final CurrentPipeState state) {
+              final isSelectedCurrentValue =
+                  state.mapOrNull(normal: (_) => true) ?? false;
+              if (isSelectedCurrentValue == false) {
+                return const _NoCurrentPipeBeeingEditedPlaceholder();
+              }
+
               final localization = whereType(TypeOfPipe.localization);
               final creational = whereType(TypeOfPipe.creational);
               final manipulation = whereType(TypeOfPipe.manipulation);
@@ -62,6 +68,27 @@ class _SectionPipelineOptions extends StatelessWidget {
 
   List<EPipeItemCurrent> whereType(TypeOfPipe type) =>
       EPipeItemCurrent.values.where((p) => p.type == type).toList();
+}
+
+class _NoCurrentPipeBeeingEditedPlaceholder extends StatelessWidget {
+  const _NoCurrentPipeBeeingEditedPlaceholder();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 8),
+        Text(
+          'No pipe is currently beeing edited...',
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.outline,
+              ),
+        ),
+      ],
+    );
+  }
 }
 
 class _ListviewOption extends StatelessWidget {

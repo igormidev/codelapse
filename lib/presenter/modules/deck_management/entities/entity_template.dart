@@ -13,6 +13,7 @@ class EntityTemplate with _$EntityTemplate {
 @freezed
 class TemplatePipeline with _$TemplatePipeline {
   factory TemplatePipeline({
+    required final String name,
     required final List<IPipeContent> pipes,
   }) = _TemplatePipeline;
 }

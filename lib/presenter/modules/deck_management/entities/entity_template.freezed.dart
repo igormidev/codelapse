@@ -153,6 +153,7 @@ abstract class _EntityTemplate implements EntityTemplate {
 
 /// @nodoc
 mixin _$TemplatePipeline {
+  String get name => throw _privateConstructorUsedError;
   List<IPipeContent> get pipes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -166,7 +167,7 @@ abstract class $TemplatePipelineCopyWith<$Res> {
           TemplatePipeline value, $Res Function(TemplatePipeline) then) =
       _$TemplatePipelineCopyWithImpl<$Res, TemplatePipeline>;
   @useResult
-  $Res call({List<IPipeContent> pipes});
+  $Res call({String name, List<IPipeContent> pipes});
 }
 
 /// @nodoc
@@ -182,9 +183,14 @@ class _$TemplatePipelineCopyWithImpl<$Res, $Val extends TemplatePipeline>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = null,
     Object? pipes = null,
   }) {
     return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       pipes: null == pipes
           ? _value.pipes
           : pipes // ignore: cast_nullable_to_non_nullable
@@ -201,7 +207,7 @@ abstract class _$$_TemplatePipelineCopyWith<$Res>
       __$$_TemplatePipelineCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<IPipeContent> pipes});
+  $Res call({String name, List<IPipeContent> pipes});
 }
 
 /// @nodoc
@@ -215,9 +221,14 @@ class __$$_TemplatePipelineCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = null,
     Object? pipes = null,
   }) {
     return _then(_$_TemplatePipeline(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       pipes: null == pipes
           ? _value._pipes
           : pipes // ignore: cast_nullable_to_non_nullable
@@ -229,9 +240,12 @@ class __$$_TemplatePipelineCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TemplatePipeline implements _TemplatePipeline {
-  _$_TemplatePipeline({required final List<IPipeContent> pipes})
+  _$_TemplatePipeline(
+      {required this.name, required final List<IPipeContent> pipes})
       : _pipes = pipes;
 
+  @override
+  final String name;
   final List<IPipeContent> _pipes;
   @override
   List<IPipeContent> get pipes {
@@ -242,7 +256,7 @@ class _$_TemplatePipeline implements _TemplatePipeline {
 
   @override
   String toString() {
-    return 'TemplatePipeline(pipes: $pipes)';
+    return 'TemplatePipeline(name: $name, pipes: $pipes)';
   }
 
   @override
@@ -250,12 +264,13 @@ class _$_TemplatePipeline implements _TemplatePipeline {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TemplatePipeline &&
+            (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._pipes, _pipes));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_pipes));
+  int get hashCode => Object.hash(
+      runtimeType, name, const DeepCollectionEquality().hash(_pipes));
 
   @JsonKey(ignore: true)
   @override
@@ -265,9 +280,12 @@ class _$_TemplatePipeline implements _TemplatePipeline {
 }
 
 abstract class _TemplatePipeline implements TemplatePipeline {
-  factory _TemplatePipeline({required final List<IPipeContent> pipes}) =
-      _$_TemplatePipeline;
+  factory _TemplatePipeline(
+      {required final String name,
+      required final List<IPipeContent> pipes}) = _$_TemplatePipeline;
 
+  @override
+  String get name;
   @override
   List<IPipeContent> get pipes;
   @override

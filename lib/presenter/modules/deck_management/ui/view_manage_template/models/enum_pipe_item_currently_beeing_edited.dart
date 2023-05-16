@@ -1,144 +1,145 @@
+import 'package:codelapse/presenter/modules/deck_management/entities/entity_template.dart';
 import 'package:codelapse/presenter/modules/deck_management/ui/view_manage_template/models/current_pipe_status.dart';
 
 enum EPipeItemCurrent {
   goOneFolderBack(
     text: 'Go one folder back',
-    fieldsName: [],
+    fieldsName: {},
     type: TypeOfPipe.localization,
   ),
   goToFolder(
     text: 'Go to folder',
-    fieldsName: ['folderName'],
+    fieldsName: {'Folder name': 'folderName'},
     type: TypeOfPipe.localization,
   ),
   goToFolderWithPreffix(
     text: 'Go to folder with preffix',
-    fieldsName: ['preffixName'],
+    fieldsName: {'Preffix name': 'preffixName'},
     type: TypeOfPipe.localization,
   ),
   goToFolderWithSuffix(
     text: 'Go to folder with suffix',
-    fieldsName: ['suffixName'],
+    fieldsName: {'Suffix name': 'suffixName'},
     type: TypeOfPipe.localization,
   ),
   goToFolderWithSuffixPreffix(
     text: 'Go to folder with suffix and preffix',
-    fieldsName: ['suffixName', 'preffixName'],
+    fieldsName: {'Suffix name': 'suffixName', 'Preffix name': 'preffixName'},
     type: TypeOfPipe.localization,
   ),
   goToFileWithPreffix(
     text: 'Go to file with preffix',
-    fieldsName: ['preffixName'],
+    fieldsName: {'Preffix name': 'preffixName'},
     type: TypeOfPipe.localization,
   ),
   goToFileWithSuffix(
     text: 'Go to file with suffix',
-    fieldsName: ['suffixName'],
+    fieldsName: {'Suffix name': 'suffixName'},
     type: TypeOfPipe.localization,
   ),
   goToFileWithSuffixPreffix(
     text: 'Go to file with suffix preffix',
-    fieldsName: ['suffixName', 'preffixName'],
+    fieldsName: {'Suffix name': 'suffixName', 'Preffix name': 'preffixName'},
     type: TypeOfPipe.localization,
   ),
   openFolderInPath(
     text: '0pen folder in path',
-    fieldsName: ['folderName'],
+    fieldsName: {'Folder name': 'folderName'},
     type: TypeOfPipe.localization,
   ),
   openOrCreateFolderInPath(
     text: 'Open or create folder in path',
-    fieldsName: ['folderName'],
+    fieldsName: {'Folder name': 'folderName'},
     type: TypeOfPipe.localization,
   ),
   createFolderInPath(
     text: 'Create  folder in path',
-    fieldsName: ['folderName'],
+    fieldsName: {'Folder name': 'folderName'},
     type: TypeOfPipe.localization,
   ),
   openFileInPath(
     text: 'Open file in path',
-    fieldsName: ['fileName'],
+    fieldsName: {'File name': 'fileName'},
     type: TypeOfPipe.localization,
   ),
   openOrCreateFileInPath(
     text: 'Open or create file in path',
-    fieldsName: ['fileName'],
+    fieldsName: {'File name': 'fileName'},
     type: TypeOfPipe.localization,
   ),
   createFileInPath(
     text: 'Create file in path',
-    fieldsName: ['fileName'],
+    fieldsName: {'File name': 'fileName'},
     type: TypeOfPipe.localization,
   ),
   createAFolderWithName(
     text: 'Create a folder with name',
-    fieldsName: [],
+    fieldsName: {},
     type: TypeOfPipe.creational,
   ),
   createFileWithName(
     text: 'Create file with name',
-    fieldsName: [],
+    fieldsName: {},
     type: TypeOfPipe.creational,
   ),
   createAFolderWithPrefixName(
     text: 'Create a folder with prefix name',
-    fieldsName: ['preffixName'],
+    fieldsName: {'Preffix name': 'preffixName'},
     type: TypeOfPipe.creational,
   ),
   createAFolderWithSuffixName(
     text: 'Create a folder with suffix name',
-    fieldsName: ['suffixName'],
+    fieldsName: {'Suffix name': 'suffixName'},
     type: TypeOfPipe.creational,
   ),
   createAFolderWithSuffixPreffix(
     text: 'Create a folder with suffix preffix',
-    fieldsName: ['suffixName', 'preffixName'],
+    fieldsName: {'Suffix name': 'suffixName', 'Preffix name': 'preffixName'},
     type: TypeOfPipe.creational,
   ),
   createAFileWithPrefixName(
     text: 'Create a file with prefix name',
-    fieldsName: ['preffixName'],
+    fieldsName: {'Preffix name': 'preffixName'},
     type: TypeOfPipe.creational,
   ),
   createAFileWithSuffixName(
     text: 'Create a file with suffix name',
-    fieldsName: ['suffixName'],
+    fieldsName: {'Suffix name': 'suffixName'},
     type: TypeOfPipe.creational,
   ),
   createAFileWithSuffixPreffix(
     text: 'Create a file with suffix preffix',
-    fieldsName: ['suffixName', 'preffixName'],
+    fieldsName: {'Suffix name': 'suffixName', 'Preffix name': 'preffixName'},
     type: TypeOfPipe.creational,
   ),
   writeInFile(
     text: 'Write in file',
-    fieldsName: ['content'],
+    fieldsName: {'Content': 'content'},
     type: TypeOfPipe.manipulation,
   ),
   removeFileWithPrefix(
     text: 'Remove file with prefix',
-    fieldsName: ['preffixName'],
+    fieldsName: {'Preffix name': 'preffixName'},
     type: TypeOfPipe.destruction,
   ),
   removeFileSuffix(
     text: 'Remove file suffix',
-    fieldsName: ['suffixName'],
+    fieldsName: {'Suffix name': 'suffixName'},
     type: TypeOfPipe.destruction,
   ),
   removeFolderWithPrefix(
     text: 'Remove folder with prefix',
-    fieldsName: ['preffixName'],
+    fieldsName: {'Preffix name': 'preffixName'},
     type: TypeOfPipe.destruction,
   ),
   removeFolderSuffix(
     text: 'Remove folder suffix',
-    fieldsName: ['suffixName'],
+    fieldsName: {'Suffix name': 'suffixName'},
     type: TypeOfPipe.destruction,
   );
 
   final String text;
-  final List<String> fieldsName;
+  final Map<String, String> fieldsName;
   final TypeOfPipe type;
   const EPipeItemCurrent({
     required this.text,
@@ -146,88 +147,160 @@ enum EPipeItemCurrent {
     required this.type,
   });
 
+  IPipeContent getCurrentPipe(Map<String, String> map) {
+    switch (this) {
+      case EPipeItemCurrent.goOneFolderBack:
+        return IPipeContent.goOneFolderBack();
+
+      case EPipeItemCurrent.goToFolder:
+        return IPipeContent.goToFolder(folderName: map['folderName']!);
+
+      case EPipeItemCurrent.goToFolderWithPreffix:
+        return IPipeContent.goToFolderWithPreffix(
+            preffixName: map['preffixName']!);
+
+      case EPipeItemCurrent.goToFolderWithSuffix:
+        return IPipeContent.goToFolderWithSuffix(
+            suffixName: map['suffixName']!);
+
+      case EPipeItemCurrent.goToFolderWithSuffixPreffix:
+        return IPipeContent.goToFolderWithSuffixPreffix(
+            preffixName: map['preffixName']!, suffixName: map['suffixName']!);
+
+      case EPipeItemCurrent.goToFileWithPreffix:
+        return IPipeContent.goToFileWithPreffix(
+            preffixName: map['preffixName']!);
+
+      case EPipeItemCurrent.goToFileWithSuffix:
+        return IPipeContent.goToFileWithSuffix(suffixName: map['suffixName']!);
+
+      case EPipeItemCurrent.goToFileWithSuffixPreffix:
+        return IPipeContent.goToFileWithSuffixPreffix(
+            suffixName: map['suffixName']!, preffixName: map['preffixName']!);
+
+      case EPipeItemCurrent.openFolderInPath:
+        return IPipeContent.openFolderInPath(folderName: map['folderName']!);
+
+      case EPipeItemCurrent.openOrCreateFolderInPath:
+        return IPipeContent.openOrCreateFolderInPath(
+            folderName: map['folderName']!);
+
+      case EPipeItemCurrent.createFolderInPath:
+        return IPipeContent.createFolderInPath(folderName: map['folderName']!);
+
+      case EPipeItemCurrent.openFileInPath:
+        return IPipeContent.openFileInPath(fileName: map['fileName']!);
+
+      case EPipeItemCurrent.openOrCreateFileInPath:
+        return IPipeContent.openOrCreateFileInPath(fileName: map['fileName']!);
+
+      case EPipeItemCurrent.createFileInPath:
+        return IPipeContent.createFileInPath(fileName: map['fileName']!);
+
+      case EPipeItemCurrent.createAFolderWithName:
+        return IPipeContent.createAFolderWithName();
+
+      case EPipeItemCurrent.createFileWithName:
+        return IPipeContent.createFileWithName();
+
+      case EPipeItemCurrent.createAFolderWithPrefixName:
+        return IPipeContent.createAFolderWithPrefixName(
+            preffixName: map['preffixName']!);
+
+      case EPipeItemCurrent.createAFolderWithSuffixName:
+        return IPipeContent.createAFolderWithSuffixName(
+            suffixName: map['suffixName']!);
+
+      case EPipeItemCurrent.createAFolderWithSuffixPreffix:
+        return IPipeContent.createAFolderWithSuffixPreffix(
+            suffixName: map['suffixName']!, preffixName: map['preffixName']!);
+
+      case EPipeItemCurrent.createAFileWithPrefixName:
+        return IPipeContent.createAFileWithPrefixName(
+            preffixName: map['preffixName']!);
+
+      case EPipeItemCurrent.createAFileWithSuffixName:
+        return IPipeContent.createAFileWithSuffixName(
+            suffixName: map['suffixName']!);
+
+      case EPipeItemCurrent.createAFileWithSuffixPreffix:
+        return IPipeContent.createAFileWithSuffixPreffix(
+            suffixName: map['suffixName']!, preffixName: map['preffixName']!);
+
+      case EPipeItemCurrent.writeInFile:
+        return IPipeContent.writeInFile(content: map['content']!);
+
+      case EPipeItemCurrent.removeFileWithPrefix:
+        return IPipeContent.removeFileWithPrefix(
+            preffixName: map['preffixName']!);
+
+      case EPipeItemCurrent.removeFileSuffix:
+        return IPipeContent.removeFileSuffix(suffixName: map['suffixName']!);
+
+      case EPipeItemCurrent.removeFolderWithPrefix:
+        return IPipeContent.removeFolderWithPrefix(
+            preffixName: map['preffixName']!);
+
+      case EPipeItemCurrent.removeFolderSuffix:
+        return IPipeContent.removeFolderSuffix(suffixName: map['suffixName']!);
+    }
+  }
+
   bool canShow(final CurrentPipeStatus s) {
     switch (this) {
       case EPipeItemCurrent.goOneFolderBack:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.goToFolder:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.goToFolderWithPreffix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.goToFolderWithSuffix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.goToFolderWithSuffixPreffix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.goToFileWithPreffix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.goToFileWithSuffix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.goToFileWithSuffixPreffix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.openFolderInPath:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.openOrCreateFolderInPath:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.createFolderInPath:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.openFileInPath:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.openOrCreateFileInPath:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.createFileInPath:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.createAFolderWithName:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.createFileWithName:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.createAFolderWithPrefixName:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.createAFolderWithSuffixName:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.createAFolderWithSuffixPreffix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.createAFileWithPrefixName:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.createAFileWithSuffixName:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.createAFileWithSuffixPreffix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.writeInFile:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.removeFileWithPrefix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.removeFileSuffix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.removeFolderWithPrefix:
-        // TODO: Handle this case.
         break;
       case EPipeItemCurrent.removeFolderSuffix:
-        // TODO: Handle this case.
         break;
     }
     return true;

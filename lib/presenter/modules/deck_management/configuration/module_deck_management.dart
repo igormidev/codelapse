@@ -1,5 +1,6 @@
 import 'package:codelapse/core/helpers/debouncer.dart';
-import 'package:codelapse/presenter/modules/deck_management/ui/view_manage_template/current_pipe/current_pipe_bloc.dart';
+import 'package:codelapse/presenter/modules/deck_management/ui/view_manage_template/blocs/current_pipe/current_pipe_bloc.dart';
+import 'package:codelapse/presenter/modules/deck_management/ui/view_manage_template/blocs/template_pipes/template_pipes_bloc.dart';
 import 'package:codelapse/presenter/modules/deck_management/ui/view_manage_template/view_create_new_template.dart';
 import 'package:codelapse/presenter/modules/deck_management/ui/view_structure_creator/bloc/structure_creator_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -20,6 +21,7 @@ class ModuleDeckManagement extends Module {
       ),
       BlocBind.singleton((i) => StructureCreatorBloc()),
       BlocBind.singleton((i) => CurrentPipeBloc()),
+      BlocBind.singleton((i) => TemplatePipesBloc()),
     ];
   }
 
